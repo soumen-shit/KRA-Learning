@@ -1,0 +1,7 @@
+FS stand for file sysytem. This is a inbuild module in node js. 
+Using this module we can handle server side 
+
+Common Use case: 
+a. File read, write, update. delete
+b. logs data.
+
