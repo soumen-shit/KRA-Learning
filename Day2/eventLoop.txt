@@ -1,0 +1,16 @@
+The event loop is implemented by libuv and runs in iterations (ticks).
+Each iteration goes through the same phases in the same order.
+
+┌───────────────────────────┐
+│        Timers             │
+├───────────────────────────┤
+│   Pending Callbacks       │
+├───────────────────────────┤
+│     Idle / Prepare        │
+├───────────────────────────┤
+│         Poll              │
+├───────────────────────────┤
+│         Check             │
+├───────────────────────────┤
+│    Close Callbacks        │
+└───────────────────────────┘

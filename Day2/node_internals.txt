@@ -1,0 +1,20 @@
+NodeJS it is mainly built with:
+
+V8 → Executes JavaScript
+
+libuv → Handles async I/O and the event loop
+
+C/C++ bindings → Bridge JS ↔ system APIs
+
+Node core modules → fs, http, net, crypto, etc.
+
+flow:
+JavaScript (V8)
+   ↓
+Call Stack
+   ↓
+Event Loop (libuv)
+   ↓
+OS / Thread Pool
+   ↓
+Callback Queue
