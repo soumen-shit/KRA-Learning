@@ -1,0 +1,7 @@
+callbacks: Callbacks are functions which passed in another function and execute when once a task completed
+
+promises: promises is an object in js. its has three state pending, fullfilled and rejected and promise take a callback function with two arguments resolve and reject. It help to handle async functions.
+
+async/await: async/await gives us optimise code with async operation. Used for handle async tsak without callback hell.
+
+error handling: We can handle error using try catch block. try block execute our main code and if our main code occur any error then catch will execute
