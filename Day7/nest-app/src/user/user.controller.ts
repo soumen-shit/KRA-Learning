@@ -7,20 +7,15 @@ import {
   Patch,
   Post,
   Put,
-  UseFilters,
-  UseGuards,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UppercasePipe } from 'src/common/pipes/uppercase/uppercase.pipe';
-import { AuthGuard } from 'src/guards/auth/auth.guard';
-import { HttpExceptionFilter } from 'src/filters/http-exception/http-exception.filter';
 
 @Controller('user') //Decorator
 export class UserController {
   constructor(private readonly userService: UserService) {}
   @Get()
-  @UseGuards(AuthGuard)
   getAllUsers() {
     return this.userService.getAllUsers();
   }
@@ -29,7 +24,6 @@ export class UserController {
     return this.userService.getUserById(Number(id));
   }
   @Post()
-  @UseFilters(new HttpExceptionFilter())
   createUser(
     @Body(new UppercasePipe())
     createUserDto: CreateUserDto,
