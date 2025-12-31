@@ -3,19 +3,22 @@ import {
   Column,
   Entity,
   JoinColumn,
-  OneToOne,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
 @Entity()
-export class Profile {
+export class Order {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  bio: string;
+  prodName: string;
 
-  @OneToOne(() => User, (user) => user.profile)
+  @Column()
+  orderQty: number;
+
+  @ManyToOne(() => User, (user) => user.orders)
   @JoinColumn()
   user: User;
 }

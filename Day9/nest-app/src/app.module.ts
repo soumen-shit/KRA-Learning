@@ -8,6 +8,12 @@ import { UserModule } from './user/user.module';
 import { User } from './user/entities/user.entity';
 import { ProfileModule } from './profile/profile.module';
 import { Profile } from './profile/entities/profile.entity';
+import { OrderModule } from './order/order.module';
+import { Order } from './order/entities/order.entity';
+import { StudentModule } from './student/student.module';
+import { CourseModule } from './course/course.module';
+import { Student } from './student/entities/student.entity';
+import { Course } from './course/entities/course.entity';
 
 @Module({
   imports: [
@@ -18,12 +24,15 @@ import { Profile } from './profile/entities/profile.entity';
       username: 'postgres',
       password: 'soumen',
       database: 'NEST_DB',
-      entities: [Book, User, Profile],
+      entities: [Book, User, Profile, Order, Student, Course],
       synchronize: true,
     }),
     BookModule,
     UserModule,
     ProfileModule,
+    OrderModule,
+    StudentModule,
+    CourseModule,
   ],
   controllers: [AppController],
   providers: [AppService],

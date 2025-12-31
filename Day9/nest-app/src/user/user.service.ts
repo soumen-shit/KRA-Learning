@@ -16,22 +16,37 @@ export class UserService {
   }
 
   async findAll() {
-    return await this.userRepo.find();
+    return await this.userRepo.find({ relations: ['profile', 'orders'] });
   }
 
   async findOne(id: number) {
-    const user = await this.userRepo.findOneBy({ id });
+    const user = await this.userRepo.findOne({
+      where: { id },
+      relations: ['profile', 'orders'],
+    });
     if (!user) {
       throw new NotFoundException('User not found');
     }
     return user;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: number, updateUserDto: UpdateUserDto) {
+    const user = await this.userRepo.findOneBy({ id });
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+    await this.userRepo.update(id, updateUserDto);
+    return user;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(id: number) {
+    const user = await this.userRepo.findOneBy({ id });
+    console.log(user);
+
+    await this.userRepo.update(id, {
+      isActive: false,
+    });
+
+    return 'User deactivated successfully';
   }
 }
