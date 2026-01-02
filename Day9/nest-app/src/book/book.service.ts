@@ -17,7 +17,10 @@ export class BookService {
   }
 
   async findAll(): Promise<Book[]> {
-    return await this.bookRepo.find();
+    return await this.bookRepo
+      .createQueryBuilder('book')
+      .select(['title'])
+      .getMany();
   }
 
   async findOne(id: string): Promise<Book | null> {

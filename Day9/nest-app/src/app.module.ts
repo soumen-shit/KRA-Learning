@@ -25,6 +25,7 @@ import { Course } from './course/entities/course.entity';
       password: 'soumen',
       database: 'NEST_DB',
       entities: [Book, User, Profile, Order, Student, Course],
+      migrations: [],
       synchronize: true,
     }),
     BookModule,
